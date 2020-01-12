@@ -192,6 +192,7 @@ void BootNormal::loop() {
 
     uint32_t vcc = ESP.getVcc();
     char vccStr[20 + 1];
+    itoa(vcc, vccStr, 10);
     Interface::get().getLogger() << F("  • VCC: ") << vccStr << endl;
     uint16_t vccPacketId = Interface::get().getMqttClient().publish(_prefixMqttTopic(PSTR("/$stats/supply")), 1, true, vccStr);
 
